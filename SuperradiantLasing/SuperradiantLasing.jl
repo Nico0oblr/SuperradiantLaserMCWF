@@ -54,5 +54,6 @@ export spectrum_from_correlator,
 
 export compare_mc_to_meanfield, compatible_mf_params
 export scan_gamma_linewidth, coherence_readout_vector, in_lasing_regime
+export outgoing_for_state
 
 end

@@ -270,6 +270,7 @@ function simulate_coherence_sector(
     S0::Int,
     M0::Int,
     τ_grid::AbstractVector;
+    w_in = initial_coherence_weight(S0, M0),
     rng::AbstractRNG = Random.default_rng(),
 )
     st = CoherenceState(S0, M0, 0.0, false)
@@ -277,8 +278,6 @@ function simulate_coherence_sector(
 
     Tacc = Float64
     contrib = zeros(Tacc, length(τ_grid))
-
-    w_in = initial_coherence_weight(S0, M0)
 
     if !valid_coherence_state(S0, M0, model.Jmax)
         return contrib
@@ -321,7 +320,7 @@ function simulate_coherence_correlator_from_samples(
     model::CoherenceModel;
     τ_max::Float64,
     n_grid::Int = 1000,
-    rng::AbstractRNG = Random.default_rng(),
+    rng::AbstractRNG = Random.default_rng()
 )
     @assert length(S_samples) == length(M_samples)
 
